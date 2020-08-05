@@ -13,6 +13,12 @@ class ListrikController extends Controller
         $listrik = Listrik::latest()->get();
         return ListrikResource::collection($listrik);
     }
+
+    public function show($id){
+        $listrik = Listrik::find($id);
+        return new ListrikResource($listrik);
+    }
+
     public function add(Request $request){
         $this->validate($request,[
             'tarif_id' => 'required',
