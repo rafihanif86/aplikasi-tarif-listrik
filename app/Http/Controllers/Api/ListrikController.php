@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class ListrikController extends Controller
 {
+    public function index(){
+        $listrik = Listrik::latest()->get();
+        return ListrikResource::collection($listrik);
+    }
     public function add(Request $request){
         $this->validate($request,[
             'tarif_id' => 'required',
